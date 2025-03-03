@@ -410,9 +410,9 @@
 //     callback();
 
 // }
-// function afterGreet(){
-//     console.log('Greet Completed')
-// }
+function afterGreet(){
+    console.log('Greet Completed')
+}
 
 // greet('Uddhav',afterGreet)
 
