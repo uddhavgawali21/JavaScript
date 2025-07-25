@@ -6,7 +6,6 @@ function cart( val1,...num) {        // Rest operator => Take all argument and m
 // console.log(cart(1,2,3,10,23))
 // console.log(cart(1, "A",2,'q'))
 
-
 const user = { 
     Uname : "Don",
     age : 21 
