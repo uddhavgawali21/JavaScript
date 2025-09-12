@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+
+<script>
+    const div = document.createElement('div')
+    console.log(div);
+    div.id = Math.round(Math.random()*10+1)
+    div.className ="MyDiv"
+    div.setAttribute("title","title")
+    div.style.color = 'red'
+    div.setAttribute("style","background-color:green")
+  //  div.innerText = 'Inside the div'
+    div.appendChild(document.createTextNode('Inside Div'))
+    document.body.appendChild(div)
+
+    const newNode = document.createElement('h2')
+    newNode.setAttribute("style","background-color:white")
+    newNode.style.color = "black"
+    newNode.innerHTML = "Hello"
+    div.appendChild(newNode)
+    //div.removeChild(newNode)
+   // newNode.remove()
+    
+
+
+    
+</script>
+</html>
