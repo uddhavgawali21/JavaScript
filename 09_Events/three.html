@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ram Ram</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    // const interval=setInterval(() => {
+    //     console.log("Uddhav");
+        
+    // }, 3000);
+    // clearInterval(interval)
+
+    let interval
+    document.getElementById("start").addEventListener('click',function(){
+         if (!interval) {
+            interval = setInterval(() => {
+            console.log("Ram Ram",Date.now());
+            
+        }, 2000);
+         }
+    })  
+    document.getElementById("stop").addEventListener('click',function(){
+        clearInterval(interval);
+        interval = null
+    })
+
+</script>
+</html>
