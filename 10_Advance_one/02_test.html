@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Label and input styling */
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"] {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 250px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Button styling */
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dynamically added content */
+        div {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Avatar image styling */
+        div img {
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="url">Enter url</label>
+    <input type="text" id="url">
+    <button id="submit">Submit</button>
+</body>
+<script>
+    document.getElementById("submit").addEventListener('click', function () {
+        const url = document.getElementById("url").value
+        console.log(url);
+
+        const xhr = new XMLHttpRequest()
+        xhr.open("GET", url)
+        xhr.send()
+
+
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState);
+            
+            
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                if(xhr.status !== 200){            
+                const newDiv = document.createElement("div")
+                newDiv.appendChild(document.createTextNode("Enter valid URL "))
+                document.body.appendChild(newDiv)
+                return
+
+            }
+                const data = JSON.parse(xhr.response)
+                console.log(data.followers);
+
+                const newDiv = document.createElement("div")
+                newDiv.appendChild(document.createTextNode("Followers : "))
+                newDiv.appendChild(document.createTextNode(data.followers))
+
+                let img = document.createElement("img")
+                img.src = data.avatar_url
+
+                newDiv.appendChild(img)
+                document.body.appendChild(newDiv)
+                console.log(data.avatar_url);            
+                console.log
+            }
+        }
+        
+    }
+
+    )
+
+</script>
+
+</html>
